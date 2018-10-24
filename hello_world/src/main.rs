@@ -151,27 +151,48 @@ fn main() {
     // }
 
     /* tuples */
-    let tuple = (24, 42);
-    println!("({} {})", tuple.0, tuple.1);
+    // let tuple = (24, 42);
+    // println!("({} {})", tuple.0, tuple.1);
 
-    let (hello, world) = "Helloworld!".split_at(5); // tuple hello and world variables assgined
-    println!("{}, {}", hello, world);
+    // let (hello, world) = "Helloworld!".split_at(5); // tuple hello and world variables assgined
+    // println!("{}, {}", hello, world);
 
     /* enumerations */
-    // struct allow multiple values under same varible, enum allow one value from different types of values
+    // // struct allow multiple values under same varible, enum allow one value from different types of values
     enum Expr {
         Null, // no associated value
         Add(i32, i32),
         Sub(i32, i32),
         Mul(i32, i32),
         Div {
-            dividened: 32, divisor: i32 // two associated value but named, kinda like structure.
+            dividend: i32,
+            divisor: i32, // two associated value but named, kinda like structure.
         },
         Val(i32), // one associated value
     }
 
     let quotient = Expr::Div {
-        dividend: 10, divisor: 2
+        dividend: 10,
+        divisor: 2,
     };
     let sum = Expr::Add(40, 2);
+    println!("{}", sum)
+
+    // fn print_expr(expr: Expr) {
+    //     match expr {
+    //         Expr::Null => println!("No value"),
+    //         Expr::Add(x, y) => println!("{}", x + y),
+    //         Expr::Sub(x, y) => println!("{}", x - y),
+    //         Expr::Mul(x, y) => println!("{}", x * y),
+    //         Expr::Div {
+    //             dividend: x,
+    //             divisor: 0,
+    //         } => println!("Divisor is zero"),
+    //         Expr::Div {
+    //             dividend: x,
+    //             divisor: y,
+    //         } => println!("{}", x / y),
+    //         Expr:Val(x) => println!("{}", x)
+    //     }
+    // }
 }
