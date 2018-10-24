@@ -108,6 +108,10 @@ fn main() {
     // println!("{}", p1.x);
 
     /* declaring methods */
+    // struct Point {
+    //     x: i32,
+    //     y: i32,
+    // }
     // impl Point {
     //     fn dist_from_origin(&self) -> f64 {
     //         // &self is like 'this' in other lang.
@@ -116,25 +120,58 @@ fn main() {
     //     }
     // }
 
-    impl Point {
-        fn translate(&mut self, dx: i32, dy: i32) {
-            // in this case the self is now mutable reference.
-            self.x += dx;
-            self.y += dy;
-        }
-    }
+    // impl Point {
+    //     fn translate(&mut self, dx: i32, dy: i32) {
+    //         // in this case the self is now mutable reference.
+    //         self.x += dx;
+    //         self.y += dy;
+    //     }
+    // }
 
     /* Constructors */
-    // Rust does not have natural constructors, but we can make one using new() static method.
-    impl Point {
-        fn new(x: i32, y: i32) -> Self {
-            // in this example, it doesn't take &self as parameter.
-            Self { x: x, y: y } // Self is TYPE of self value. We could've used Point.
-        }
+    // // Rust does not have natural constructors, but we can make one using new() static method.
+    // impl Point {
+    //     fn new(x: i32, y: i32) -> Self {
+    //         // in this example, it doesn't take &self as parameter.
+    //         Self { x: x, y: y } // Self is TYPE of self value. We could've used Point.
+    //     }
+    // }
+
+    // // when field name is the same as the value assigned, you omit a few things.
+    // fn new(x: i32, y: i32) -> Self {
+    //     Self { x, y }
+    // }
+    // let point = Point::new();
+
+    // example of multiple constructors
+    // impl Point {
+    //     fn origin() -> Self {
+    //         Point { x: 0, y: 0 }
+    //     }
+    // }
+
+    /* tuples */
+    let tuple = (24, 42);
+    println!("({} {})", tuple.0, tuple.1);
+
+    let (hello, world) = "Helloworld!".split_at(5); // tuple hello and world variables assgined
+    println!("{}, {}", hello, world);
+
+    /* enumerations */
+    // struct allow multiple values under same varible, enum allow one value from different types of values
+    enum Expr {
+        Null, // no associated value
+        Add(i32, i32),
+        Sub(i32, i32),
+        Mul(i32, i32),
+        Div {
+            dividened: 32, divisor: i32 // two associated value but named, kinda like structure.
+        },
+        Val(i32), // one associated value
     }
 
-    // when field name is the same as the value assigned, you omit a few things.
-    fn new(x: i32, y: i32) -> Self {
-        Self { x, y }
-    }
+    let quotient = Expr::Div {
+        dividend: 10, divisor: 2
+    };
+    let sum = Expr::Add(40, 2);
 }
